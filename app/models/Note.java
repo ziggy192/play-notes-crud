@@ -1,8 +1,12 @@
 package models;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "notes",schema = "play-training")
 public class Note {
+
     private int id;
     private String title;
     private String body;
@@ -17,6 +21,8 @@ public class Note {
         this.body = body;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -24,6 +30,7 @@ public class Note {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public String getTitle() {
         return title;

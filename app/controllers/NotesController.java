@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import models.Note;
 import models.NoteRepository;
 import play.libs.Json;
-import play.mvc.Controller;
-import play.mvc.Http;
-import play.mvc.Result;
-import play.mvc.Results;
+import play.mvc.*;
 
 import javax.inject.Inject;
 import java.util.Optional;
@@ -17,10 +14,13 @@ public class NotesController extends Controller {
     @Inject
     NoteRepository noteRepository;
 
+
+    @BodyParser.Of(BodyParser.Json.class)
     public Result getAll() {
         return ok(Json.toJson(noteRepository.getAll()));
     }
 
+    @BodyParser.Of(BodyParser.Json.class)
     public Result addNote(Http.Request request) {
         Optional<Note> optionalNote= request.body().parseJson(Note.class);
         if (!optionalNote.isPresent()) {
@@ -32,6 +32,7 @@ public class NotesController extends Controller {
         return ok(Json.toJson(mangedNote));
     }
 
+    @BodyParser.Of(BodyParser.Json.class)
     public Result getNoteById(int id) {
 
         Optional<Note> optionalNote = noteRepository.findById(id);
@@ -43,7 +44,7 @@ public class NotesController extends Controller {
         }
 
     }
-
+    @BodyParser.Of(BodyParser.Json.class)
     public Result updateNote(int id, Http.Request request) {
 
         Optional<Note> optionalNote = noteRepository.findById(id);
@@ -60,7 +61,7 @@ public class NotesController extends Controller {
         }
 
     }
-
+    @BodyParser.Of(BodyParser.Json.class)
     public Result deleteNote(int id) {
         Optional<Note> optionalNote = noteRepository.findById(id);
         if (optionalNote.isPresent()) {
