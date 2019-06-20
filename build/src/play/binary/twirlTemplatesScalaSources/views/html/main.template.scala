@@ -28,7 +28,7 @@ object main extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlF
   /*
  * This template is called from the `index` template. This template
  * handles the rendering of the page header and body tags. It takes
- * two arguments, a `String` for the title of the page and an `Html`
+ * two arguments, login_index `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  */
   def apply/*7.2*/(title: String)(content: Html):play.twirl.api.HtmlFormat.Appendable = {

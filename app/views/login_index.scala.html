@@ -1,0 +1,26 @@
+@import play.mvc.Http.Request
+
+@(form: Form[LoginData])(implicit request: Request)
+
+
+@main("Login"){
+    <div>
+
+        <h1>Login</h1>
+
+        @request.flash().asScala().data.map{ case (name,value) =>
+            <div class="@name">@value</div>
+        }
+
+        @helper.form(routes.LoginController.login) {
+            @helper.CSRF.formField
+
+            @helper.inputText(form("username"))
+
+            @helper.inputPassword(form("password"))
+
+            <button type="submit">Login</button>
+        }
+
+    </div>
+}

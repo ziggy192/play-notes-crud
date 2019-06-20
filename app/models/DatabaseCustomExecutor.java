@@ -10,7 +10,7 @@ public class DatabaseCustomExecutor extends CustomExecutionContext {
 
     @Inject
     public DatabaseCustomExecutor(ActorSystem actorSystem) {
-        super(actorSystem, "post.repository");
+        super(actorSystem, "database.dispatcher");
     }
 }
 

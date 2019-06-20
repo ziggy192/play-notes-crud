@@ -70,7 +70,7 @@ class Routes(
       Nil,
       "GET",
       this.prefix + """""",
-      """ An example controller showing a sample home page""",
+      """ An example controller showing login_index sample home page""",
       Seq()
     )
   )
